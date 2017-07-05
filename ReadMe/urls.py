@@ -4,6 +4,8 @@ from django.contrib import admin
 from readme_api.user_basics import signup, signin, forgot_password_handler, signout, check_user
 from readme_api.app import submit_link, return_list_of_links, delete_link
 from readme_api.spider import scraper
+from readme_api.email_handler import dummy_forgot_mail
+from readme_api.scrapper import spider
 
 urlpatterns = [
     # Examples:
@@ -19,5 +21,7 @@ urlpatterns = [
     url(r'^api/v0.0.1/user/link/delete$', delete_link),
     url(r'^api/v0.0.1/user/reset/password$', forgot_password_handler),
     url(r'^api/v0.0.1/user/scraper$', scraper),
+    url(r'^api/v0.0.1/user/email/reset', dummy_forgot_mail),
+    url(r'^spider', spider),
 
 ]
