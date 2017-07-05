@@ -1,4 +1,5 @@
 """ Email Handler """
+from django.http import JsonResponse
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
@@ -59,6 +60,10 @@ def send_signup_email(email, name, token):
     to_addr = [email]
     ack = send_email(name, subject, html, to_addr)
     return ack
+
+def dummy_forgot_mail(request):
+    print request.GET
+    return JsonResponse({"details":"From Server"}, status=200)
 
 def send_forgot_password_email(email, name, token):
     """ Send Email to change password """
