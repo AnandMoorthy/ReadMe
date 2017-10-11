@@ -9,7 +9,7 @@ node {
       sh 'python manage.py makemigraions'
       sh 'python manage.py migrate'
   }
-  catch {
-    sh 'echo "Error Occured"'
+  catch (err) {
+    sh 'echo "Error Occured By Anand"'
   }
 }
