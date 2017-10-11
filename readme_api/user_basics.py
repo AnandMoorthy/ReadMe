@@ -64,7 +64,9 @@ def signup(request):
     email = request.GET.get('email')
     platform = request.GET.get('platform')
     now = strftime("%d-%m-%Y %H:%M:%S")
-    if None or "" in (name, username, password, email, platform):
+    if name is None or username is None or password is None or email is None:
+        return JsonResponse({"message":"Fields can't be empty"}, status=400)
+    if platform is None:
         return JsonResponse({"message":"Fields can't be empty"}, status=400)
     check_username = UserDetails.objects.filter(username=username)
     check_email = UserDetails.objects.filter(email=email)
